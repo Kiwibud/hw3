@@ -1,3 +1,7 @@
+
+import copy
+
+
 def main():
     m = [[1, 2, 0],
         [4, 0, 5],
@@ -9,11 +13,26 @@ def main():
     print(box(m, (0, 0)))
     print(box(m, (2, 1)))
     print(box(m, (3, 1)))
-    # print(box([5], (0, 0))) #Crash the program
+    # print(box([5], (0, 0)))
+    image = [[168, 168, 170, 172, 174, 158, 154, 170],
+             [172, 126, 109, 86, 72, 72, 95, 129],
+             [146, 152, 165, 183, 176, 177, 178, 176],
+             [181, 153, 80, 57, 79, 57, 29, 23],
+             [29, 34, 19, 28, 38, 39, 15, 26],
+             [14, 21, 18, 21, 21, 18, 24, 25]]
+    print(blur(image))
+    print(image)
+    print(blur(m))
+    print(m)
 
 
 # user sum and len and a comprehension
 def average_matrix(m):
+    """
+
+    :param m:
+    :return:
+    """
     row = len(m)
     col = len(m[0])
     total = 0
@@ -27,6 +46,12 @@ def average_matrix(m):
 
 # min, max, list slice, list comprehension
 def box(m, center):
+    """
+
+    :param m:
+    :param center:
+    :return:
+    """
     grid = []
     if len(m) == 0:
         return None
@@ -62,7 +87,18 @@ def box(m, center):
 # return integer, invoke average and box function
 # returns a nested list representing the blurred image.
 def blur(image):
-    print()
+    """
+
+    :param image:
+    :return:
+    """
+    result = copy.deepcopy(image)
+    for i in range(len(image)):
+        for j in range(len(image[0])):
+            submatrix = box(image, (i, j))
+            average = round(average_matrix(submatrix))
+            result[i][j] = average
+    return result
 
 
 if __name__ == "__main__":
