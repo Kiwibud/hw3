@@ -1,6 +1,4 @@
 
-import copy
-
 
 def main():
     m = [[1, 2, 0],
