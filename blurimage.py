@@ -26,10 +26,11 @@ def main():
 
 # user sum and len and a comprehension
 def average_matrix(m):
-    """
-
-    :param m:
-    :return:
+     """
+    This function calculates the average value of all the element of
+    a nested list (matrix)
+    :param m:  the matrix that needs to be calculate the average value
+    :return: (float) the average value of the matrix
     """
     row = len(m)
     col = len(m[0])
@@ -44,6 +45,14 @@ def average_matrix(m):
 
 # min, max, list slice, list comprehension
 def box(m: list, center: tuple) -> list:
+    """
+    This function get a matrix and a tuple as parameter
+    to return the 3x3 submatrix centered about the tuple
+    or a submatrix less than 3x3 if the tuple is at the egde
+    :param m: matrix
+    :param center: the tuple represents the row and column of the center
+    :return: the submatrix that has the tuple as center or edge
+    """
     py, px = center[0], center[1]
     m = m if isinstance(m[py], list) else [m]
     output = []
